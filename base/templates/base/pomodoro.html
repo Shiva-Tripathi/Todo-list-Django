@@ -1,0 +1,150 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pomodoro timer </title>
+    <link rel="stylesheet" href="{% static 'css/pomodoro.css'%}">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/959bc45a87.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/959bc45a87.js" crossorigin="anonymous"></script>
+
+<style>
+  /* CSS */
+.button-72 {
+  align-items: center;
+  background-color: initial;
+  background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+  border-radius: 42px;
+  border-width: 0;
+  box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,rgba(179, 132, 201, 0.4) 0 8px 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  font-family: Quicksand,sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: .04em;
+  line-height: 16px;
+  margin-right: 1280px;
+  margin-top: 30px;
+  padding: 18px 18px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,rgba(255, 255, 255, 0.2) 0 0 12px,rgba(57, 31, 91, 0.6) 1px 1px 4px,rgba(57, 31, 91, 0.32) 4px 4px 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+
+.button-72:hover {
+  background-image: linear-gradient(#B384C9, #391F5B 50%);
+}
+
+@media (min-width: 768px) {
+  .button-72 {
+    font-size: 21px;
+    padding: 18px 34px;
+  }
+}
+</style>   
+
+</head>
+
+
+<body>
+<!-- HTML !-->
+<!-- HTML !-->
+<a href="{%url 'homeview'%}" button class="button-72" role="button">Home</button></a>
+
+
+  
+    <div class="app-container" >
+
+        <input type="text" class="app-header" value="Pomodoro" />
+        <div class="clocks">
+          <ul class="clock-list">
+            <li class="activeLi" data-tab-target="#pomodoro">pomodoro</li>
+            <li data-tab-target="#short">break</li>
+          </ul>
+        </div>
+        <div class="clocks-container">
+          <div id="pomodoro" data-tab-content>
+            <span class="time-left">
+              <span id="pomodoro-minutes">00</span>
+              :
+              <span id="pomodoro-seconds">00</span>
+            </span>
+            <button class="button" id="pomodoro-playPause">play</button>
+          </div>
+          <div id="short" data-tab-content>
+            <span class="time-left">
+              <span id="break-minutes">00</span>
+              :
+              <span id="break-seconds">00</span>
+            </span>
+            <button class="button" id="break-playPause">play</button>
+          </div>
+        </div>
+        <div class="settings" style="margin-bottom: 60px;">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+      
+      <div id="task-app">
+          <form action="">
+      
+            <input type="text" placeholder="New Task" class="task-input" id="" autocomplete />
+            <button type="submit" class="task-btn">
+              <i class="fas fa-plus-square"></i>
+            </button>
+          </form>
+      
+          <div class="task-container">
+            <ul class="task-list"></ul>
+          </div>
+      
+          <div id="advanced">
+            <button type="submit" class="clr-task">Clear items</button>
+          </div>
+        </div>
+      
+      <ul id="notif-container"></ul>
+      
+      <form class="modal">
+        <div class="settings-panel">
+          <header class="panel-header">
+            <h1>Settings</h1>
+                <i style="color: black;" class="fas fa-times close-btn"></i>
+          </header>
+          <div class="flexbox">
+            <section class="row timer-settings" style="flex-direction: column; align-items: flex-start;">
+              <label for="timer-inputs">time (minutes)</label>
+              <div id="timer-inputs">
+                <div style="flex: 0 0 auto;display: flex; flex-direction: column;">
+                  <label for="timer">Pomodoro</label>
+                  <input type="number" min="0" id="timer"/>
+                </div>
+                <div style="flex: 0 0 auto;display: flex; flex-direction: column;">
+                  <label for="break">Break</label>
+                  <input type="number" min="0" id="break"/>
+                </div>
+              </div>
+            </section>
+
+          </div>
+          <button type="submit" class="apply-settings" id="applySettings">Apply</button>
+        </div>
+      </form>
+      <script src="{% static 'js/pomodoro.js' %}"></script>
+
+    
+</body>
+</html>
+
+
+  
